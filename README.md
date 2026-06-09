@@ -1,22 +1,23 @@
-# pdvzip_rust
-***This is an experimental Rust port of my C++ polyglot file tool [***pdvzip***](https://github.com/CleasbyCode/pdvzip)***  
+# pdvzip-rs 
+
+***This is an experimental ***Rust*** port of my C++ polyglot file tool [***pdvzip***](https://github.com/CleasbyCode/pdvzip)*** 
 
 Embed a ***ZIP*** or ***JAR*** file within a ***PNG*** image to create a ***tweetable*** and "[***executable***](https://github.com/CleasbyCode/pdvzip#extracting-your-embedded-files)" ***PNG*** polyglot file.  
 Share the image on ***X-Twitter*** and a few other compatible platforms, which retains the embedded archive.  
 
-*Note: For compatibility reasons, please do not use encrypted / password protected ZIP files.*
+*Note: For compatibility reasons, please ***do not*** use encrypted / password protected ZIP files.*
 
-Any issues with configuring ***pdvzip*** with your file types, then please just ask: [***@cleasbycode***](https://x.com/CleasbyCode)
+There is also a [***Web edition***](https://cleasbycode.co.uk/pdvzip/app/), which you can use immediately, as a convenient alternative to downloading and compiling the CLI source code. Web file uploads are limited to **20MB**. 
 
 Based on the similar idea by [***David Buchanan***](https://www.da.vidbuchanan.co.uk/), from his original ***Python*** program [***tweetable-polyglot-png***](https://github.com/DavidBuchanan314/tweetable-polyglot-png),  
-***pdvzip*** uses different methods for [***storing***](https://github.com/CleasbyCode/pdvzip#png-image-requirements-for-arbitrary-data-preservation) and [***extracting***](https://github.com/CleasbyCode/pdvzip#extracting-your-embedded-files) embedded files within a ***PNG*** image.  
+***pdvzip-rs*** uses different methods for [***storing***](https://github.com/CleasbyCode/pdvzip#png-image-requirements-for-arbitrary-data-preservation) and [***extracting***](https://github.com/CleasbyCode/pdvzip#extracting-your-embedded-files) embedded files within a ***PNG*** image.  
   
-![Demo Image](https://github.com/CleasbyCode/pdvzip/blob/main/demo_image/GrfkF1uWQAAgu7o.png)  
-***Image credit:*** [***@obeca***](https://x.com/obeca)  
+![Demo Image](https://github.com/CleasbyCode/pdvzip/blob/main/demo_image/HDO2mHoWYAAUxIy.png)  
+***Credits:*** *Image* - [***@KCP228***](https://x.com/KCP228) *PowerShell Script* - [***@gierrofo***](https://x.com/gierrofo)
 
 The ***Linux/Windows*** extraction script is stored within the ***iCCP*** chunk of the ***PNG*** image. The embedded ***ZIP/JAR*** file is stored within its own ***IDAT*** chunk, which will be the last ***IDAT*** chunk of the image file.  
 
-With ***pdvzip***, you can embed a ***ZIP/JAR*** file up to a maximum size of ***2GB** (cover image + archive file). Compatible sites, ***listed below***, have their own ***much smaller*** size limits.
+With ***pdvzip-rs***, you can embed a ***ZIP/JAR*** file up to a maximum size of ***2GB** (cover image + archive file). Compatible sites, ***listed below***, have their own ***much smaller*** size limits.
 
 ## Compatible Platforms
 *Posting size limit measured by the combined size of the cover image + compressed data file.* 
@@ -28,30 +29,28 @@ With ***pdvzip***, you can embed a ***ZIP/JAR*** file up to a maximum size of **
 * ***PNG-32/24*** (*Truecolor*) **68x68** Min. - **900x900** Max.
 * ***PNG-8*** (*Indexed-color*) **68x68** Min. - **4096x4096** Max.
 
-There is also a [***Web edition***](https://cleasbycode.co.uk/pdvzip/app/), which you can use immediately, as a convenient alternative to downloading and compiling the CLI source code. Web file uploads are limited to **20MB**. 
-
 ## Usage (Linux)
 
 ```console
-
+$ sudo apt install build-essential
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ cargo build --release
 
-Build complete. Binary at 'target/release/pdvzip_rs'.
+Build complete. Binary at 'target/release/pdvzip-rs'.
 
-$ sudo cp target/release/pdvzip_rs /usr/bin 
-$ pdvzip_rs
+$ sudo cp target/release/pdvzip-rs /usr/bin
+$ pdvzip-rs
 
-Usage: pdvzip_rs <cover_image> <zip/jar>
-       pdvzip_rs --info
+Usage: pdvzip-rs <cover_image> <zip/jar>
+       pdvzip-rs --info
 
-$ pdvzip_rs my_cover_image.png document_pdf.zip
+$ pdvzip-rs my_cover_image.png document_pdf.zip
 
 Created PNG-ZIP polyglot image file: pzip_55183.png (4038367 bytes).
 
 Complete!
 
-$ pdvzip_rs my_cover_image.png hello_world.jar
+$ pdvzip-rs my_cover_image.png hello_world.jar
 
 Created PNG-JAR polyglot image file: pjar_19662.png (1016336 bytes).
 
@@ -63,11 +62,15 @@ Complete!
 
 The following section covers the extraction of embedded ***ZIP*** files. ***JAR*** files are covered later.
 
-***pdvzip*** (for ***Linux***) will attempt to ***automatically set executable permissions*** on newly created polyglot image files.  
+***pdvzip-rs*** (for ***Linux***) will attempt to ***automatically set executable permissions*** on newly created polyglot image files.  
 
 You will need to manually set executable permissions using ***chmod*** on these polyglot images downloaded from hosting sites or copied from another machine.
 
-https://github.com/user-attachments/assets/2c545745-279b-4e07-83aa-2ce5d0b78c90
+https://github.com/user-attachments/assets/8feca575-b135-4f58-839a-2159fce09b44  
+
+https://github.com/user-attachments/assets/77472a02-52dd-4a5c-a035-b30dcc842cce  
+
+https://github.com/user-attachments/assets/a143e694-31f5-4235-ace1-30217fe8ab41
 
 ***Linux - using bash (or sh) shell environment.***
 ```console
@@ -120,22 +123,24 @@ For common ***video & audio*** files, ***Linux*** will first attempt to use the 
 
 For any other file type within your ***ZIP*** file, ***Linux*** & ***Windows*** will rely on the operating system's set default method/application. Obviously, the compressed/embedded file needs to be compatible with the operating system you run it on.
 
-If the archive file is ***JAR*** or the compressed file type within the ***ZIP*** archive is ***PowerShell***, ***Python***, ***Shell Script*** or a ***Windows/Linux Executable, pdvzip*** will give you the option to provide command-line arguments for your file, if required. 
+If the archive file is ***JAR*** or the compressed file type within the ***ZIP*** archive is ***PowerShell***, ***Python***, ***Shell Script*** or a ***Windows/Linux Executable, pdvzip-rs*** will give you the option to provide command-line arguments for your file, if required. 
 
 The ***command-line arguments*** will be added to the ***Linux/Windows*** extraction script, embedded within the ***iCCP*** chunk of your ***PNG*** cover image. 
 
 Make sure to enclose arguments containing spaces, such as file & directory names, within "quotation" marks. e.g.
 ```console
-$ ./pdvzip_rs my_cover_image.png jdvrif_linux_executable.zip
+$ ./pdvzip-rs my_cover_image.png jdvrif_linux_executable.zip
 
 For this file type you can provide command-line arguments here, if required.
 
 Linux: -e ../my_cover_image.jpg "../my document file.pdf"
 
 ```
-Also, be aware when using arguments for the compressed ***ZIP*** file types (not ***JAR***), you are always working from within the subdirectory "***pdvzip_extracted***".  
+Also, be aware when using arguments for the compressed ***ZIP*** file types (not ***JAR***), that you are always working from within a created subdirectory "***pdvzip_xxxxx (e.g. pdvzip_51424)***".  
 
-https://github.com/user-attachments/assets/dbff15e2-87b0-4fe5-a640-3420d356020e
+https://github.com/user-attachments/assets/e55e9671-423c-4439-89e6-356c0080b4c1
+
+https://github.com/user-attachments/assets/8d6d97c1-4c70-4f60-bba5-b01fad08b60e
 
 To just get access to the file(s) within the ***ZIP*** archive, rename the '***.png***' file extension to '***.zip***'.  
 Treat the ***ZIP*** archive as read-only, do not add or remove files from the ***PNG-ZIP*** polyglot file.  
@@ -192,9 +197,9 @@ Image dimensions can be set between a minimum of **68 x 68** and a maximum of **
 
 ***Note:*** *A cover image that is detected as ***PNG-32/24 Truecolor (color type 6 or 2),*** 
 with less than 257 colors, 
-will be converted by ***pdvzip*** to a ***PNG-8 Indexed-color (color type 3)*** image. 
+will be converted by ***pdvzip-rs*** to a ***PNG-8 Indexed-color (color type 3)*** image. 
 This is done for compatiblity reasons as it should prevent platforms such as ***X-Twitter***
-from also converting your image, which would result in the lose of the embedded archive file.*
+from also converting your image, which would result in the loss of the embedded archive file.*
 
 ***PNG-8 (Indexed-color)***
 
@@ -212,7 +217,7 @@ pHYs, sBIT, sPLT, sRGB,*** *tRNS (Use only with PNG-32 images).*
 
 *Other platforms may differ in what chunks they preserve and which ones you can overfill.*
   
-***pdvzip*** uses the chunks ***iCCP*** (stores extraction script) and ***IDAT*** (stores the ***ZIP/JAR*** file) for your arbitrary data.
+***pdvzip-rs*** uses the chunks ***iCCP*** (stores extraction script) and ***IDAT*** (stores the ***ZIP/JAR*** file) for your arbitrary data.
 
 ## ***ZIP/JAR*** File Size & Other Important Information
 
@@ -222,13 +227,15 @@ To work out the maximum ***ZIP/JAR*** file size, start with the size limit, minu
 
 * Make sure your ***ZIP/JAR*** file is a standard ***ZIP/JAR*** archive, compatible with ***Linux*** unzip & ***Windows*** Explorer.
 * Do not include more than one ***.zip*** file within the main ***ZIP*** archive. (***.rar*** files are ok).
-* Do not include other ***pdvzip*** created ***PNG*** image files within the main ***ZIP*** archive, as they are essentially ***.zip*** files.
-* Always use file extensions for your file(s) within the ***ZIP*** archive: ***my_doc.pdf***, ***my_video.mp4***, ****my_program.py****, etc.
+* Do not include other ***pdvzip-rs*** created ***PNG*** image files within the main ***ZIP*** archive, as they are essentially ***.zip*** files.
+* Always use file extensions for your file(s) within the ***ZIP*** archive: ***my_doc.pdf***, ***my_video.mp4***, ***my_program.py***, etc.
   A file without an extension within a ***ZIP*** archive will be considered a ***Linux*** executable.      
 
 ## An 8 File Tweetable PNG Polyglot
 
 ![Polyglot Image](https://github.com/CleasbyCode/pdvzip/blob/main/demo_image/Png_P0wershell_Z1p.png)  
+
+https://github.com/user-attachments/assets/d1b5888c-fe91-4a58-8ad6-731d9165a57c
 
 A while ago I put together an 8 file (tweetable) PNG polyglot file. I recently found it again, so thought I would share it here. 
 I have made some changes to the polyglot, such as improving the PowerShell script and using a different MP4 video file that is embedded
@@ -270,3 +277,12 @@ The PowerShell script will extract and play an MP4 video file embedded within th
 
 Video credit: The video file used in the PowerShell example is the work of [***@doopiidoop***](https://x.com/doopiidoop)
 
+## Third-Party Libraries
+
+This project includes the following third-party library:
+
+- **LodePNG** by Lode Vandevenne
+  - License: zlib/libpng (see [***LICENSE***](https://github.com/lvandeve/lodepng/blob/master/LICENSE) file)
+  - Copyright (c) 2005-2024 Lode Vandevenne
+
+##
