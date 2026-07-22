@@ -279,8 +279,6 @@ The PowerShell script will extract and play an MP4 video file embedded within th
 
 Video credit: The video file used in the PowerShell example is the work of [***@doopiidoop***](https://x.com/doopiidoop)
 
-## Third-Party Libraries
-
 ## Third-Party Software and Assets
 
   This project uses the following Rust crates:
