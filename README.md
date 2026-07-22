@@ -32,11 +32,13 @@ With ***pdvzip-rs***, you can embed a ***ZIP/JAR*** file up to a maximum size of
 ## Compilation & Usage (Linux)
 
 ```console
+$ sudo apt update
 $ sudo apt install build-essential
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-$ cargo build --release
 
-Build complete. Binary at 'target/release/pdvzip-rs'.
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+$ source "$HOME/.cargo/env"
+
+$ cargo build --release --locked
 
 $ sudo cp target/release/pdvzip-rs /usr/bin
 $ pdvzip-rs
@@ -279,10 +281,45 @@ Video credit: The video file used in the PowerShell example is the work of [***@
 
 ## Third-Party Libraries
 
-This project includes the following third-party library:
+## Third-Party Software and Assets
 
-- **LodePNG** by Lode Vandevenne
-  - License: zlib/libpng (see [***LICENSE***](https://github.com/lvandeve/lodepng/blob/master/LICENSE) file)
-  - Copyright (c) 2005-2024 Lode Vandevenne
+  This project uses the following Rust crates:
+
+  ### Direct dependencies
+
+  - [image-png](https://github.com/image-rs/image-png) — PNG decoding and encoding.
+
+    License: [MIT](https://github.com/image-rs/image-png/blob/master/LICENSE-MIT) / [Apache-2.0](https://github.com/image-rs/image-png/blob/master/LICENSE-APACHE)
+    
+    Copyright © 2015 nwin; maintained by the image-rs Developers.
+
+  - [flate2](https://github.com/rust-lang/flate2-rs) — DEFLATE and zlib-stream decompression.
+
+    License: [MIT](https://github.com/rust-lang/flate2-rs/blob/main/LICENSE-MIT) / [Apache-2.0](https://github.com/rust-lang/flate2-rs/blob/main/LICENSE-APACHE)
+    
+    Copyright © 2014–2026 Alex Crichton.
+
+  - [crc32fast](https://github.com/srijs/rust-crc32fast) — CRC-32 calculation for PNG chunks, ZIP entries and extraction scripts.
+    
+    License: [MIT](https://github.com/srijs/rust-crc32fast/blob/master/LICENSE-MIT) / [Apache-2.0](https://github.com/srijs/rust-crc32fast/blob/master/LICENSE-APACHE)
+    
+    Copyright © 2018 Sam Rijs, Alex Crichton, and contributors.
+
+  - [libc](https://github.com/rust-lang/libc) — Linux file-opening constants used for secure file handling.
+
+    License: [MIT](https://github.com/rust-lang/libc/blob/main/LICENSE-MIT) / [Apache-2.0](https://github.com/rust-lang/libc/blob/main/LICENSE-APACHE)
+
+    Copyright © The Rust Project Developers.
+
+  ### Transitive production dependencies
+
+  The current locked dependency graph also contains:
+
+  - adler2 2.0.1 — 0BSD OR MIT OR Apache-2.0
+  - bitflags 1.3.2 — MIT OR Apache-2.0
+  - cfg-if 1.0.4 — MIT OR Apache-2.0
+  - fdeflate 0.3.7 — MIT OR Apache-2.0
+  - [miniz_oxide](https://github.com/Frommi/miniz_oxide) 0.8.9 — MIT OR zlib OR Apache-2.0
+  - simd-adler32 0.3.8 — MIT
 
 ##
