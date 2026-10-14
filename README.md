@@ -120,16 +120,18 @@ For common ***video & audio*** files, ***Linux*** will first attempt to use the 
 
 ***PDF*** - ***Linux*** will use ***evince*** or ***firefox***. ***Windows*** uses the default ***PDF*** viewer.  
 ***Python*** - ***Linux*** & ***Windows*** use ***python3*** to run these programs.  
-***PowerShell*** - ***Linux*** uses ***pwsh*** (if installed), ***Windows*** uses either ***powershell.exe*** or ***pwsh.exe*** to run these scripts.
-***Folder*** - ***Linux*** uses ***xdg-open***, ***Windows*** uses ***powershell.exe*** with II (***Invoke-Item***) command, to open zipped folders.
+***JavaScript*** - ***Linux*** & ***Windows*** use ***node*** (***Node.js***) to run these scripts.  
+***PowerShell*** - ***Linux*** uses ***pwsh*** (if installed), ***Windows*** uses either ***powershell.exe*** or ***pwsh.exe*** to run these scripts.  
+***Folder*** - ***Linux*** uses ***xdg-open***, ***Windows*** uses the ***default shell file association*** to open zipped folders.
 
 For any other file type within your ***ZIP*** file, ***Linux*** & ***Windows*** will rely on the operating system's set default method/application. Obviously, the compressed/embedded file needs to be compatible with the operating system you run it on.
 
-If the archive file is ***JAR*** or the compressed file type within the ***ZIP*** archive is ***PowerShell***, ***Python***, ***Shell Script*** or a ***Windows/Linux Executable, pdvzip-rs*** will give you the option to provide command-line arguments for your file, if required. 
+If the archive file is ***JAR*** or the compressed file type within the ***ZIP*** archive is ***PowerShell***, ***Python***, ***JavaScript***, ***Shell Script*** or a ***Windows/Linux Executable, pdvzip*** will give you the option to provide command-line arguments for your file, if required. 
 
 The ***command-line arguments*** will be added to the ***Linux/Windows*** extraction script, embedded within the ***iCCP*** chunk of your ***PNG*** cover image. 
 
-Make sure to enclose arguments containing spaces, such as file & directory names, within "quotation" marks. e.g.
+Make sure to enclose arguments containing spaces, such as file & directory names, within "quotation" marks. e.g.  
+
 ```console
 $ ./pdvzip-rs my_cover_image.png jdvrif_linux_executable.zip
 
@@ -138,7 +140,7 @@ For this file type you can provide command-line arguments here, if required.
 Linux: -e ../my_cover_image.jpg "../my document file.pdf"
 
 ```
-Also, be aware when using arguments for the compressed ***ZIP*** file types (not ***JAR***), that you are always working from within a created subdirectory "***pdvzip_xxxxx (e.g. pdvzip_51424)***".  
+Also, be aware when using arguments for the compressed ***ZIP*** file types (not ***JAR***), that you are always working from within a created subdirectory named after the polyglot image file (for example, extracting ***pzip_55183.png*** creates and works within the subdirectory ***pzip_55183***).  
 
 https://github.com/user-attachments/assets/e55e9671-423c-4439-89e6-356c0080b4c1
 
