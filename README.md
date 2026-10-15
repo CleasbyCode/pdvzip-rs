@@ -2,8 +2,7 @@
 
 ***This is an experimental ***Rust*** port of my C++ polyglot file tool [***pdvzip***](https://github.com/CleasbyCode/pdvzip)*** 
 
-Embed a ***ZIP*** or ***JAR*** file within a ***PNG*** image to create a ***tweetable*** and "[***executable***](https://github.com/CleasbyCode/pdvzip#extracting-your-embedded-files)" ***PNG*** polyglot file.  
-Share the image on ***X-Twitter*** and a few other compatible platforms, which retains the embedded archive.  
+Embed a ***ZIP*** or ***JAR (Java ARchive)*** file within a ***PNG*** image to create a ***tweetable*** and ***"executable"*** ***PNG*** polyglot file.  Share the image on ***X-Twitter*** and a few other compatible platforms, which retains the embedded archive.  
 
 *Note: For compatibility reasons, please ***do not*** use encrypted / password protected ZIP files.*
 
