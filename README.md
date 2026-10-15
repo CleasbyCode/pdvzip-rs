@@ -71,7 +71,7 @@ https://github.com/user-attachments/assets/c6d365e8-07ba-4925-ad00-97c81e8bb381
 
 https://github.com/user-attachments/assets/77472a02-52dd-4a5c-a035-b30dcc842cce  
 
-https://github.com/user-attachments/assets/b359301b-29e5-440d-8337-2d91fc04ff90
+https://github.com/user-attachments/assets/0390a249-6cd4-4b89-8db5-08ca9742c07b
 
 ***Linux - using bash (or sh) shell environment.***
 ```console
@@ -141,12 +141,12 @@ Linux: -e ../my_cover_image.jpg "../my document file.pdf"
 ```
 Also, be aware when using arguments for the compressed ***ZIP*** file types (not ***JAR***), that you are always working from within a created subdirectory named after the polyglot image file (for example, extracting ***pzip_55183.png*** creates and works within the subdirectory ***pzip_55183***).  
 
+To just get access to the file(s) within the ***ZIP*** archive, rename the '***.png***' file extension to '***.zip***'.  
+Treat the ***ZIP*** archive as read-only, do not add or remove files from the ***PNG-ZIP*** polyglot file.  
+
 https://github.com/user-attachments/assets/e55e9671-423c-4439-89e6-356c0080b4c1
 
 https://github.com/user-attachments/assets/8d6d97c1-4c70-4f60-bba5-b01fad08b60e
-
-To just get access to the file(s) within the ***ZIP*** archive, rename the '***.png***' file extension to '***.zip***'.  
-Treat the ***ZIP*** archive as read-only, do not add or remove files from the ***PNG-ZIP*** polyglot file.  
 
 ## Executing Embedded Java Programs
 
@@ -237,6 +237,7 @@ To work out the maximum ***ZIP/JAR*** file size, start with the size limit, minu
 ## An 8 File Tweetable PNG Polyglot
 
 ![Polyglot Image](https://github.com/CleasbyCode/pdvzip/blob/main/demo_image/Png_P0wershell_Z1p.png)  
+*Note: This polyglot image was not created by* ***pdvzip-rs***.
 
 https://github.com/user-attachments/assets/d1b5888c-fe91-4a58-8ad6-731d9165a57c
 
