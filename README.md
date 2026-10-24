@@ -312,15 +312,25 @@ Video credit: The video file used in the PowerShell example is the work of [***@
 
     Copyright © The Rust Project Developers.
 
+  - [rustix](https://github.com/bytecodealliance/rustix) — Safe Linux system-call wrappers (O_TMPFILE, linkat and renameat2 with RENAME_NOREPLACE) used to publish output files atomically without replacing existing files. Linux builds only.
+
+    License: [Apache-2.0 WITH LLVM-exception](https://github.com/bytecodealliance/rustix/blob/main/LICENSE-Apache-2.0_WITH_LLVM-exception) / [Apache-2.0](https://github.com/bytecodealliance/rustix/blob/main/LICENSE-APACHE) / [MIT](https://github.com/bytecodealliance/rustix/blob/main/LICENSE-MIT)
+
+    Copyright © the rustix contributors (Dan Gohman, Jakub Konka, and others).
+
   ### Transitive production dependencies
 
   The current locked dependency graph also contains:
 
   - adler2 2.0.1 — 0BSD OR MIT OR Apache-2.0
   - bitflags 1.3.2 — MIT OR Apache-2.0
+  - bitflags 2.13.0 — MIT OR Apache-2.0
   - cfg-if 1.0.4 — MIT OR Apache-2.0
   - fdeflate 0.3.7 — MIT OR Apache-2.0
+  - [linux-raw-sys](https://github.com/sunfishcode/linux-raw-sys) 0.12.1 — Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
   - [miniz_oxide](https://github.com/Frommi/miniz_oxide) 0.8.9 — MIT OR zlib OR Apache-2.0
   - simd-adler32 0.3.8 — MIT
+
+  `Cargo.lock` also lists errno 0.3.14, windows-sys 0.61.2 and windows-link 0.2.1. These are rustix's dependencies for non-Linux platforms and are not compiled into the Linux build.
 
 ##
